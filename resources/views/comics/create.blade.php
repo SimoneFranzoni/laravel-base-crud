@@ -1,45 +1,51 @@
-@extends('layouts.main')
+@extends('layout.main')
 
 @section('content')
 
-   <main class="container">
-      <h1>Nuovo fumetto</h1>
-      <form action="{{ route('comics.store') }}" method="post">
-         @csrf
-         <div class="mb-3">
-            <label for="title" class="form-label">Titolo</label>
-            <input type="text" name="title" class="form-control" id="title" placeholder="Inserisci titolo">
-         </div>
-         <div class="mb-3">
-            <label for="price" class="form-label">Prezzo</label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="Inserisci prezzo">
-         </div>
-         <div class="mb-3">
-            <label for="series" class="form-label">Serie</label>
-            <input type="text" name="series" class="form-control" id="series" placeholder="Inserisci serie">
-         </div>
-         <div class="mb-3">
-            <label for="sale_date" class="form-label">Data</label>
-            <input type="text" name="sale_date" class="form-control" id="sale_date" placeholder="Inserisci data">
-         </div>
-         <div class="mb-3">
-            <label for="imgUrl" class="form-label">URL Immagine</label>
-            <input type="text" name="imgUrl" class="form-control" id="imgUrl" placeholder="Inserisci URL immagine">
-         </div>
-         <div class="mb-3">
-            <label for="type" class="form-label">Tipo</label>
-            <input type="text" name="type" class="form-control" id="imgUrl" placeholder="Inserisci tipo">
-         </div>
-         <div class="mb-3">
-            <label for="description" class="form-label">Descrizione</label>
-            <div class="form-floating">
-               <textarea class="form-control" placeholder="Inserisci la descrizione" id="floatingTextarea2" name="description" style="height: 100px"></textarea>
-             </div>
-         </div>
+<div class="container">
+    <div class="row">
+        <h2>Create new Comic</h2>
+    </div>
+    <div class="row my-3">
+        <div class="col-8">
+            <form action="{{route('comics.store')}}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="title" class="form-label">Comic Title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Comic title">
+                </div>
+                <div class="mb-3">
+                    <label for="thumb" class="form-label">Comic thumbnail</label>
+                    <input type="text" class="form-control" name="thumb" id="thumb" placeholder="Comic thumb">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Comic Price</label>
+                    <input type="text" class="form-control" name="price" id="price" placeholder="Comic price">
+                </div>
+                <div class="mb-3">
+                    <label for="series" class="form-label">Series</label>
+                    <input type="text" class="form-control" name="series" id="series" placeholder="Comic series">
+                </div>
+                <div class="mb-3">
+                    <label for="sale_date" class="form-label">Start Sale</label>
+                    <input type="text" class="form-control" name="sale_date" id="sale_date" placeholder="Comic sale_date">
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Comic Type</label>
+                    <input type="text" class="form-control" name="type" id="type" placeholder="Comic type">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea for="description" class="form-control" name="description" id="description" cols="15" rows="5"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <a href="{{url()->previous()}}">Back to List</a>
+                    <button type="reset" class="btn btn-secondary m-2">Reset all Fields</button>
+                    <button type="submit" class="btn btn-success m-2">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-         <button type="submit" class="btn btn-success">Invia</button>
-         <button type="reset" class="btn btn-secondary">Reset</button>
-      </form>
-   </main>
-   
 @endsection

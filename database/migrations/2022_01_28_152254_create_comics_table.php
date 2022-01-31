@@ -8,30 +8,33 @@ class CreateComicsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
+     * 
+     * @return void 
      */
+
     public function up()
     {
         Schema::create('comics', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('imgUrl');
-            $table->float('price');
+            $table->string('slug');
+            $table->string('thumb');
+            $table->float('price', 8, 2);
             $table->string('series');
             $table->date('sale_date');
-            $table->string('type');
-            $table->string('slug');
+            $table->string('type', 45);
+            $table->text('description');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
+     * 
+     * @return void 
      */
+     
+
     public function down()
     {
         Schema::dropIfExists('comics');

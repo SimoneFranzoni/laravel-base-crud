@@ -1,22 +1,27 @@
-@extends('layouts.main')
+@extends('layout.main')
 
 @section('content')
 
-   <main class="container">
-      <h1>{{ $comic->title }}</h1>
-      <div class="d-flex">
-         <div style="width: 40%">
-            <img class="mb-3 img-fluid" src="{{ $comic->imgUrl }}" alt="poster">
-            <span class="h2 mx-2">{{ number_format($comic->price, 2, ',', '') }}€</span>
-         </div>
-         <div style="width: 55%">
-            <p>{{ $comic->description }}</p>
-            <div>
-               <button class="btn btn-outline-danger"><a href="{{ route('comics.index') }}">Torna alla lista</a></button>
-               <button class="btn btn-primary"><a class="text-white" href="{{ route('comics.edit', $comic) }}">Edit</a></button>
-            </div>
-         </div>
-      </div>
-   </main>
-   
+    <div class="container">
+        <div class="row">
+            <h2>Comic Details</h2>
+
+        </div>
+        <span>
+            <a class="btn btn-primary my-2" href="{{route('comics.edit', $comic)}}">EDIT</a>
+         </span>
+        <div class="row">
+            <ul class="list-group">
+                <li class="list-group-item">Comic Title: {{$comic['title']}}</li>
+                <li class="list-group-item">Comic Slug: {{$comic['slug']}}</li>
+                <li class="list-group-item">Comic thumbnail: {{$comic['thumb']}}</li>
+                <li class="list-group-item">Comic Price: {{$comic['price']}}</li>
+                <li class="list-group-item">Comic Series: {{$comic['series']}}</li>
+                <li class="list-group-item">Comic Sale Date: {{$comic['sale_date']}}</li>
+                <li class="list-group-item">Comic Type: {{$comic['type']}}</li>
+                <li class="list-group-item">Comic Descpription: {{$comic['description']}}</li>
+            </ul>
+        </div>
+        <a class="btn btn-primary mt-4" href="{{route('comics.index')}}">Back to Comics List</a>
+    </div>
 @endsection

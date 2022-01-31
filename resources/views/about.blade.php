@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <h2>Home Page</h2>
+        <h2>About Us</h2>
     </div>
 </div>
 @endsection
